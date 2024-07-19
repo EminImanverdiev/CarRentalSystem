@@ -14,8 +14,8 @@ namespace DataAccess.Concrete.EntityFramework
         {
             optionsBuilder.UseSqlServer(@"Server=LAPTOP-S4ROCGFN\SQLEXPRESS01;Database=RentalSystemDb;Trusted_Connection=true");
         }
-        public DbSet<Car> Cars { get; set; }
-        public DbSet<Color> Colors { get; set; }
-        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Car>? Cars { get; set; }
+        public DbSet<Color>? Colors { get; set; }
+        public DbSet<Brand>? Brands { get; set; }
     }
 }
