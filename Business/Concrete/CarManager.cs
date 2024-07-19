@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -14,14 +17,24 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
+            if (car.CarName.Length<2)
+            {
+                return new ErrorResult(Messages.CarNameInvalid);
+            }
             _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
+            if (DateTime.UtcNow.Hour==21)
+            {
+                return new ErrorResult(Messages.MaintenanceTime);
+            }
             _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
         public List<Car> GetAll()
@@ -50,9 +63,10 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.ColorId == ColorId);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }
