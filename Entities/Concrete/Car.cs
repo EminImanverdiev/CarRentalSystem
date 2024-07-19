@@ -16,5 +16,9 @@ namespace Entities.Concrete
         public float DailyPrice { get; set; }
         public DateTime ModelYear { get; set; }
         public string? Description { get; set; }
+        public Brand Brand { get; set; } 
+        public Color Color { get; set; }
+        public  ICollection<Rental> Rentals { get; set; }
+
     }
 }
