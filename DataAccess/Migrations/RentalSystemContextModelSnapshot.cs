@@ -15,7 +15,7 @@ namespace DataAccess.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
+     #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.32")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
@@ -139,7 +139,6 @@ namespace DataAccess.Migrations
 
                     b.ToTable("Rentals");
                 });
-
             modelBuilder.Entity("Entities.Concrete.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -242,7 +241,7 @@ namespace DataAccess.Migrations
                 {
                     b.Navigation("Customers");
                 });
-#pragma warning restore 612, 618
+    #pragma warning restore 612, 618
         }
     }
 }
